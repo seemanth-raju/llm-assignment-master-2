@@ -1,71 +1,70 @@
-# ProtonDatalabs AI developer Assignment - Chatbot application
+Chatbot Application README
+Introduction
+This README provides an overview of the chatbot application developed as part of the ProtonDatalabs AI developer Assignment. The application allows users to upload files and ask questions, with the chatbot generating responses based on the content of the uploaded files.
 
-## Preface
+Project Structure
+The project consists of two main components: the backend and the frontend.
 
-At ProtonDatalabs, we leverage cutting-age gen-AI solutions to deliver buisness value to our clients. We are able to do this by combining aspects from AI modelling to full-stack developement.
+Backend
+The backend is built using Python and the FastAPI framework. It includes the following files and directories:
 
-In this assignment, your task is to build a chatbot application which takes a file as an input and answers user's query. The goal of this application is to accurately provide answers based on the uploaded file. This application could be used as an assistant to quickly answer questions or summarize facts from files containing large amounts of text data, making our lives easier.
+main.py: Entry point to the FastAPI server.
+requirements.txt: List of Python dependencies for the project.
+dotenv: Configuration file for environment variables.
+utils.py: Contains utility functions for file processing and database operations.
+app.py: Contains the FastAPI application instance and route definitions.
+MongoDB: MongoDB database is used for storing question-answer pairs.
+Frontend
+The frontend is built using React.js and includes the following files and directories:
 
-## Project structure
+App.tsx: Main component of the React application, responsible for rendering the user interface and handling user interactions.
+components/EmptyResponse.tsx: Component for rendering an empty response when no data is available.
+App.css: Stylesheet for styling the components.
+public/index.html: HTML file serving as the entry point for the React application.
+Technologies Used
+Backend
+FastAPI: FastAPI is a modern, fast (high-performance) web framework for building APIs with Python 3.7+ based on standard Python type hints.
+Pydantic: Pydantic is used for data validation and settings management using Python type annotations.
+PyPDF2: PyPDF2 is a pure-Python PDF library capable of splitting, merging together, cropping, and transforming the pages of PDF files.
+python-docx: python-docx is a Python library for creating and updating Microsoft Word (.docx) files.
+pandas: pandas is a fast, powerful, flexible, and easy-to-use open-source data analysis and manipulation library built on top of the Python programming language.
+requests: requests is a simple, yet elegant HTTP library for Python.
+pymongo: pymongo is the official Python driver for MongoDB.
+Frontend
+React.js: React.js is a JavaScript library for building user interfaces, particularly single-page applications.
+TypeScript: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+Tailwind CSS: Tailwind CSS is a utility-first CSS framework for rapidly building custom designs.
+React Icons: React Icons is a library containing popular icon packs for React applications.
+File Upload: HTML input element with type="file" is used for uploading files.
+How It Was Built
+Backend Development:
 
-In this project you find 2 directories
+The backend was developed using FastAPI, a modern Python framework for building APIs.
+Routes were defined to handle file uploads, user queries, and data retrieval from MongoDB.
+File processing functions were implemented to extract text content from various file formats such as CSV, TXT, PDF, and DOCX.
+MongoDB was used as the database to store question-answer pairs.
+Frontend Development:
 
-1. `backend` containing the server side **python** code
-2. `frontend` containing the client side **typescript** code.\
-   In both these directories, it is your job to complete the missing modules and add necessary functionalities to make the app fully functional.
+The frontend was developed using React.js with TypeScript for type safety.
+Components were created to handle file uploads, user input, and display responses.
+Tailwind CSS was used for styling the components, providing a clean and responsive design.
+Fetch API was utilized to communicate with the backend server for sending requests and receiving responses.
+Why These Tools Were Used
+FastAPI:
 
-### Backend
+FastAPI was chosen for the backend due to its simplicity, performance, and support for asynchronous programming.
+It provides automatic validation, serialization, and documentation of request and response data, making it easy to develop and maintain APIs.
+React.js:
 
-**Requirements**: Python 3.10 or above. We will test your submission against Python 3.10.
+React.js was chosen for the frontend because of its component-based architecture, declarative syntax, and robust ecosystem.
+TypeScript was used to enhance type safety and improve code maintainability.
+Tailwind CSS:
 
-1. `main.py` which is the entry point to our server
-2. This project has a few Python packages as dependencies, you can install them in your virtual environment using `requirements.txt`. If you were to use other dependencies, then please add them to `requirements.txt`.
-3. We will be using [`conda`](https://docs.conda.io/projects/conda/en/stable/) package manager to create a virtual environment `chatbot` using `conda create -n chatbot python=3.10` and then `conda activate chatbot` to activate the environment.
-4. Then install the python packages using `pip install -r requirements.txt`
+Tailwind CSS was selected for styling the frontend components because of its utility-first approach, which allows for rapid prototyping and customization.
+It eliminates the need for writing custom CSS and provides a consistent design system across the application.
+MongoDB:
 
-#### Running the backend server
-
-To launch the server, navigate to the `backend` directory and run:
-
-##### `uvicorn main:app --reload`
-
-This will start the server at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
-### Frontend
-
-The project structure within the `frontend` directory follows the official `create-react-app` structure as in the [docs](https://create-react-app.dev/docs/folder-structure). Some of the files have been removed for convenience & brevity.
-
-**Requirements**: We are using `node V20.11.1` and `npm 10.2.4`. They can be downloaded via [installer](https://nodejs.org/en). For more information check [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-
-#### How to launch the react app
-
-1. Navigate to the `frontend` directory and run `npm install`
-2. Then you can run:
-
-   ##### `npm start`
-
-   This will launch the app in development mode.\
-   Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits. You will also see any lint errors in the console.
-
-## The assignment
-
-### Backend
-
-1. Currently, the server returns `hello world!` everytime user makes a query, which needs to be changed. Modify the `/predict` endpoint to acheive this. You are free to use any architecture here: API based or open-source LLMs. The end goal in either case is to have a meaningful result based on the user query and uploaded file.
-2. Implement the storage and handling of the incoming files from the frontend. You can use any database management system like MongoDB or MySQL for this.
-
-### Frontend
-
-1. Add a pop up which notifies that the file has been uploaded properly.
-2. Extend the app's functionality to accept `.txt`,`.docx` & `.pdf` files in addition to `.csv` files.
-3. Add some styling to the bare bones app structure. You are free to use any popular CSS frameworks like Tailwind or UI libraries like Material or Chakra UI. Bonus points for creative and innovative designs.
-
-## Note
-
-1. We expect that the app behaves similar to real world applications we interact with everyday. So think from the point of view of a user and handle all the possible edge cases which may occur while running the app. For instance, you can think of cases when the user has uploaded a very large file (>100mb) or a unsupported file type like video/mp3.
-2. **Important** We want you to uphold your best programming practices (SOLID, OOPs, type hints) for the completion of this assignment, as if your code would end up in production and interact with other software components. A robust solution which covers fewer points will be judged more favourably than a complete solution that cuts corners.
-3. We will check your assignment by doing a full run of your app with all possible edge cases and see how the results look. Please ensure the program is in a finished state so that we can execute even though you might not have
-   completed it in full.
-4. Finally, be sure to provide a `README` document detailing your approach to completing the assignment, including the decisions you took and the reasons behind them.
+MongoDB was chosen as the database for its flexibility, scalability, and ease of use.
+It allows for the storage of unstructured data, making it suitable for storing text content extracted from various file formats.
+Conclusion
+The chatbot application was built using a combination of FastAPI for the backend, React.js for the frontend, and MongoDB for data storage. By leveraging these tools and technologies, we were able to create a robust and user-friendly application capable of processing user queries and generating responses based on uploaded files.
